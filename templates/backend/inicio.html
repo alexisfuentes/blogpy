@@ -1,0 +1,62 @@
+{% extends "base-admin.html" %}
+{% block 'title' %}
+	Administrador del blog
+{% endblock 'title' %}
+{% block 'content' %}
+	<table>
+		<thead>
+			<tr>
+				<th>Titulo</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in  post %}
+			<tr>
+				<td>{{ p.titulo }}</td>
+				<td>
+					<a href="{% url 'vista_editar_admin' p.id %}">Editar</a> |
+					<a href="{% url 'vista_borrar_admin' p.id %}">Borrar</a> |
+					<strong>
+						{% if p.estatus == 'p' %}
+							Publicado
+						{% elif p.estatus == 'b' %}
+							Borrado
+						{% else %}
+							En espera
+						{% endif %}
+					</strong>
+				</td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			{% endfor %}
+			
+		</tbody>
+	</table>
+	<table>
+		<thead>
+			<tr>
+				<th>Imagen</th>
+				<th>URL</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for img in images %}
+				<tr>
+					<td>
+						<img src="{{ MEDIA_URL }}{{ img }}" width="25px" alt="">
+					</td>
+					<td>
+						{{ MEDIA_URL }}{{ img }}
+					</td>
+				</tr>
+			{% empty %}
+				No haz subido ninguna imagen
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock 'content' %}

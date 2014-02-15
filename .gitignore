@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+*.pyc
+*.sqlite3
+=======
+*.log
+*.pot
+*.pyc
+local_settings.py
+>>>>>>> f0903bf643bea280c58d7692184b2d2f65cc93ea

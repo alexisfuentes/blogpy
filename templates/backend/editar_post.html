@@ -1,0 +1,25 @@
+{% extends "base-admin.html" %}
+{% block 'title' %}
+	{{ post.titulo }}
+{% endblock 'title' %}
+{% block 'content' %}
+	<form action="" method="post" name="editarPost" id="editarPost">
+		{% csrf_token %}
+		<p>
+			<label for="titulo">Titulo</label>
+			<input type="text" name="titulo" id="titulo" value="{{ post.titulo }}" required>
+		</p>
+		<p>
+			<label for="slug">Slug</label>
+			<input type="text" name="slug" id="slug" value="{{ post.slug }}" required>
+		</p>
+		<p>
+			<label for="texto">Contenido</label>
+			<textarea required name="texto" id="" cols="30" rows="10">{{ post.texto }}</textarea>
+		</p>
+		<p>
+			<a href="{% url 'vista_inicio_admin' %}">Cancelar</a>
+			<button type="submit">Guardar</button>
+		</p>
+	</form>
+{% endblock 'content' %}

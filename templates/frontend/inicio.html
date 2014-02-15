@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block 'title' %}
+	Inicio
+{% endblock 'title' %}
+{% block 'content' %}
+{# Comentario de django #}
+	{% for p in  post %}
+		<p>
+			<strong>{{ p.fecha }}</strong>
+			<h3>{{ p.titulo }}</h3>
+			<em>
+				{{ p.texto }}
+			</em>
+			<a href="{% url 'vista_post' p.slug %}">Ver mas</a>
+			<h6>{{ p.autor }}</h6>
+		</p>
+	{% empty %}
+		Por el momento no hay post publicados!
+	{% endfor %}
+	
+{% endblock 'content' %}

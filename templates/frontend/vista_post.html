@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block 'title' %}
+	{{ contenido.titulo }}
+{% endblock 'title' %}
+{% block 'content' %}
+	<p>
+		{{ contenido.texto }}
+		<p>
+			<em>
+				{{ contenido.autor }}
+			</em>
+		</p>
+	</p>
+	{% for com in comentarios %}
+		<em>{{ com.autor }}</em>
+		<div class="content-coment">
+			{{ com.comentario }}
+		</div>
+	{% empty %}
+		{# En caso de que no haya ningun comentario para mostrar aparecera esta leyenda #}
+		No hay comentarios para este post
+	{% endfor %}
+	
+{% endblock 'content' %}
